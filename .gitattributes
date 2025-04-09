@@ -1,0 +1,11 @@
+/mvnw text eol=lf
+*.cmd text eol=crlf
+
+# maven
+/target/
+
+# IDE
+.idea/
+.mvn/
+
+
