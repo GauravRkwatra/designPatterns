@@ -22,8 +22,12 @@ public class PizzaFactory {
     protected Pizza addToppings(Pizza pizza, String topping) {
 
         ToppingDecorators tDecorate = pizzaWithToppings.get(topping);
-        tDecorate.setPizza(pizza);
-        pizza = tDecorate;
+
+        if(tDecorate != null) {
+            tDecorate.setPizza(pizza);
+            pizza = tDecorate;
+        }
+
         return pizza;
     }
 }

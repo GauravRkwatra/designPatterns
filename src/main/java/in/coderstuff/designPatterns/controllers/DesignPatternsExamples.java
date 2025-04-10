@@ -1,5 +1,6 @@
 package in.coderstuff.designPatterns.controllers;
 
+import in.coderstuff.designPatterns.dto.PizzaDTO;
 import in.coderstuff.designPatterns.services.LeosPizzaService;
 import in.coderstuff.designPatterns.services.Pizza;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,9 @@ public class DesignPatternsExamples {
     private LeosPizzaService leosPizzaService;
 
     @GetMapping("{type}")
-    public ResponseEntity<Pizza> getPizza(@PathVariable String type,
+    public ResponseEntity<PizzaDTO> getPizza(@PathVariable String type,
                                       @RequestParam(required = false) List<String> toppings) {
-        Pizza customPizza = leosPizzaService.getCustomPizza(type, toppings);
-        return ResponseEntity.ok(customPizza);
+        Pizza pizza = leosPizzaService.getCustomPizza(type, toppings);
+        return ResponseEntity.ok(new PizzaDTO(pizza.getDesc(), pizza.getCost()));
     }
 }
