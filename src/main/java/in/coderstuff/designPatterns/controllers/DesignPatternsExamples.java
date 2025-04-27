@@ -41,4 +41,16 @@ public class DesignPatternsExamples {
         return ResponseEntity.ok(new BuilderDTO(simpleBuilder.getEmpId(), simpleBuilder.getName()));
 
     }
+
+    @GetMapping("/builder/{empId}/{name}")
+    public ResponseEntity<BuilderDTO> createBuilderObjWithOptional(@PathVariable int empId,
+                                                                   @PathVariable String name,
+                                                                   @RequestParam int age,
+                                                                   @RequestParam String address) {
+
+        SimpleBuilder simpleBuilder = builderService.simpleBuilderWithOptionalParams(empId, name, age, address);
+        return ResponseEntity.ok(new BuilderDTO(simpleBuilder.getEmpId(), simpleBuilder.getName(),
+                                                simpleBuilder.getAge(), simpleBuilder.getAddress()));
+
+    }
 }
