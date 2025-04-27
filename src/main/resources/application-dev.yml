@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: Dev-Design-Patterns
+  task:
+    execution:
+      pool:
+        core-size: 5
+        max-size: 10
+        queue-capacity: 100
+      thread-name-prefix: AsyncThread-
+
+server:
+  servlet:
+    context-path: /patterns
