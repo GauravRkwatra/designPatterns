@@ -2,7 +2,7 @@ package in.coderstuff.designPatterns.controllers;
 
 import in.coderstuff.designPatterns.builders.SimpleBuilder;
 import in.coderstuff.designPatterns.dto.BuilderDTO;
-import in.coderstuff.designPatterns.dto.PizzaDTO;
+import in.coderstuff.designPatterns.dto.DecoratorDTO;
 import in.coderstuff.designPatterns.services.BuilderService;
 import in.coderstuff.designPatterns.services.LeosPizzaService;
 import in.coderstuff.designPatterns.services.Pizza;
@@ -27,10 +27,10 @@ public class DesignPatternsExamples {
     }
 
     @GetMapping("/decorator/pizza/{type}")
-    public ResponseEntity<PizzaDTO> pizza(@PathVariable String type,
-                                      @RequestParam(required = false) List<String> toppings) {
+    public ResponseEntity<DecoratorDTO> pizza(@PathVariable String type,
+                                              @RequestParam(required = false) List<String> toppings) {
         Pizza pizza = leosPizzaService.getCustomPizza(type, toppings);
-        return ResponseEntity.ok(new PizzaDTO(pizza.getDesc(), pizza.getCost()));
+        return ResponseEntity.ok(new DecoratorDTO(pizza.getDesc(), pizza.getCost()));
     }
 
     @GetMapping("/builder/{empId}/{name}")

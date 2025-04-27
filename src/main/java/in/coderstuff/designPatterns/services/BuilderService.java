@@ -1,5 +1,6 @@
 package in.coderstuff.designPatterns.services;
 
+import in.coderstuff.designPatterns.builders.LombokBuilder;
 import in.coderstuff.designPatterns.builders.SimpleBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,15 @@ public class BuilderService {
                 .age(age)
                 .address(address)
                 .build();
+    }
+
+    public LombokBuilder lombokBuilder(int empId, String name) {
+        LombokBuilder lombokBuilder = LombokBuilder.builder()
+                .empId(empId)
+                .name(name)
+                .build();
+
+        return lombokBuilder;
     }
 
 }
