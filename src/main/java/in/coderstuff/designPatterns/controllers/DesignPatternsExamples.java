@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pizza")
+@RequestMapping("/patterns")
 public class DesignPatternsExamples {
 
     private LeosPizzaService leosPizzaService;
@@ -26,7 +26,7 @@ public class DesignPatternsExamples {
         this.builderService = builderService;
     }
 
-    @GetMapping("{type}")
+    @GetMapping("/decorator/pizza/{type}")
     public ResponseEntity<PizzaDTO> pizza(@PathVariable String type,
                                       @RequestParam(required = false) List<String> toppings) {
         Pizza pizza = leosPizzaService.getCustomPizza(type, toppings);
@@ -42,15 +42,15 @@ public class DesignPatternsExamples {
 
     }
 
-    @GetMapping("/builder/{empId}/{name}")
+    @GetMapping("/builder/{empId}/{name}/optional")
     public ResponseEntity<BuilderDTO> createBuilderObjWithOptional(@PathVariable int empId,
                                                                    @PathVariable String name,
-                                                                   @RequestParam int age,
+                                                                   @RequestParam String age,
                                                                    @RequestParam String address) {
 
         SimpleBuilder simpleBuilder = builderService.simpleBuilderWithOptionalParams(empId, name, age, address);
         return ResponseEntity.ok(new BuilderDTO(simpleBuilder.getEmpId(), simpleBuilder.getName(),
-                                                simpleBuilder.getAge(), simpleBuilder.getAddress()));
+                                                simpleBuilder.getAge()));
 
     }
 }
