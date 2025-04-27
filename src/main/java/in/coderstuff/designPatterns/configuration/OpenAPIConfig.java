@@ -13,9 +13,9 @@ public class OpenAPIConfig {
         return new OpenAPI()
                 .info(
                         new Info()
-                                .title("Pizza Building API")
+                                .title("Design Pattern Demo APIs")
                                 .version("1.0")
-                                .description("Building pizza using Decorator Pattern")
+                                .description("Design pattern examples")
                 );
     }
 }
