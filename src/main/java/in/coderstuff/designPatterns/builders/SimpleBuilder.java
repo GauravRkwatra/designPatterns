@@ -15,11 +15,15 @@ public class SimpleBuilder {
     private String address;
     private final int empId;
     private String age;
+    private String department;
 
     // Private constructor to enforce object creation
     private SimpleBuilder(SimpleBuilderImpl builder) {
         this.name = builder.name;
         this.empId = builder.empId;
+        this.age = builder.age;
+        this.department = builder.department;
+        this.address = builder.address;
     }
 
     public int getEmpId() {
@@ -38,12 +42,17 @@ public class SimpleBuilder {
         return age;
     }
 
+    public String getDepartment() {
+        return department;
+    }
+
     public static class SimpleBuilderImpl {
 
         private final String name;
         private final int empId;
         private String address;
-        private int age;
+        private String age;
+        private String department;
 
         public SimpleBuilderImpl(int empId, String name) {
             this.name = name;
@@ -55,8 +64,13 @@ public class SimpleBuilder {
             return this;
         }
 
-        public SimpleBuilderImpl age(int age) {
+        public SimpleBuilderImpl age(String age) {
             this.age = age;
+            return this;
+        }
+
+        public SimpleBuilderImpl department(String department) {
+            this.department = department;
             return this;
         }
 
